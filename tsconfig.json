@@ -12,8 +12,8 @@
       "@styles/*": ["./src/styles/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@entities/*": ["./src/entities/*"],
-      "@api/*": ["./src/api/*"],
-      "@pages/*": ["./src/components/pages/*"]
+      "@pages/*": ["./src/components/pages/*"],
+      "@images/*": ["src/images/*"]
       // "@template/*": ["src/*"],
     },
 

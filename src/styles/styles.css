@@ -11,12 +11,16 @@
 }
 
 html,
-#root {
-  @apply h-[100vh] w-[100vw];
+#App {
+  @apply h-[100vh] w-[100vw] bg-background;
 }
 
 html {
   background-color: var(--background);
   color: var(--text);
   overflow: hidden;
+}
+
+.svgfill {
+  color: var(--text);
 }
