@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(218, 26%, 24%);
+  --element: hsl(218, 26%, 20%);
+  --primary: hsl(201, 31%, 42%);
+  --accent: hsl(350, 100%, 74%);
+  --text: hsl(17, 100%, 99%);
+}
+
+html,
+#root {
+  @apply h-[100vh] w-[100vw];
+}
+
+html {
+  background-color: var(--background);
+  color: var(--text);
+  overflow: hidden;
+}
