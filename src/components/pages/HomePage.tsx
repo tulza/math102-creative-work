@@ -1,7 +1,7 @@
 import { loremIpsom } from "@/data/dialogue";
 import { motion } from "framer-motion";
 import Button from "../ImageButton";
-import { LeftArrow } from "@/images/imageExport";
+import { LeftArrow, RightArrow } from "@/images/imageExport";
 
 const HomePage = () => {
   return (
@@ -13,6 +13,7 @@ const HomePage = () => {
         <code>Math 102 Creative work</code>
         <code>Tjit528</code>
       </div>
+
       <div
         id="Content"
         className="flex h-full flex-col items-center justify-center gap-10"
@@ -23,7 +24,10 @@ const HomePage = () => {
             <p key={index}>{dialogue}</p>
           ))}
         </div>
-        <Button className="svgfill" image={LeftArrow} />
+        <div className="flex">
+          <Button image={LeftArrow} text="back" />
+          <Button className="flex-row-reverse" image={RightArrow} text="next" />
+        </div>
       </div>
     </div>
   );
