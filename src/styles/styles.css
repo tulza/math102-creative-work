@@ -16,8 +16,8 @@ html,
 }
 
 html {
-  background-color: var(--background);
-  color: var(--text);
+  background-color: white;
+  color: black;
   overflow: hidden;
 }
 
