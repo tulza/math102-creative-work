@@ -1,12 +1,13 @@
 import useMousePos from "@/hooks/useMousePos";
 import { IconLight } from "@/images/imageExport";
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import LoadingCircle from "../LoadingCircle";
 import DisclaimerText from "../disclaimerText";
+import { useContext } from "react";
+import { TransitionContext } from "@/App";
 
 const LoadingPage = () => {
   const { mouseX, mouseY } = useMousePos();
-
   const parallax = (effectStrength: number) => {
     if (mouseX == null || mouseY == null) {
       return;
@@ -17,6 +18,7 @@ const LoadingPage = () => {
       }px, ${(mouseY - window.innerHeight / 2) * effectStrength}px)`,
     };
   };
+  const { handleTransitionTo } = useContext(TransitionContext);
 
   return (
     <motion.div
@@ -73,9 +75,9 @@ const LoadingPage = () => {
           <div className="h-1 w-full bg-black" />
           <div className="flex items-center justify-between">
             <div>
-              <p className="relative text-3xl">BY: TJIT528</p>
+              <p className="relative whitespace-nowrap text-3xl">BY: TJIT528</p>
               <p
-                className="textStroke absolute bottom-5 text-3xl text-transparent"
+                className="textStroke absolute bottom-5 whitespace-nowrap  text-3xl text-transparent"
                 style={parallax(0.005)}
               >
                 BY: TJIT528
@@ -89,7 +91,10 @@ const LoadingPage = () => {
               variants={{
                 hover: { background: "#000", color: "#fff" },
               }}
-              transition={{ duration: 0.1, opacity: { delay: 3 } }}
+              transition={{ duration: 0.1, opacity: { delay: 0 } }}
+              onClick={() => {
+                handleTransitionTo("main");
+              }}
             >
               Continue
             </motion.div>
