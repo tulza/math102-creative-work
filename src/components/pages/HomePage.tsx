@@ -1,7 +1,7 @@
 import { loremIpsom } from "@/data/dialogue";
 import { motion } from "framer-motion";
 import Button from "../ImageButton";
-import { LeftArrow, RightArrow } from "@/images/imageExport";
+import { LeftArrow, RightArrow } from "@/images/imageExport.js";
 
 const HomePage = () => {
   return (
@@ -25,8 +25,21 @@ const HomePage = () => {
           ))}
         </div>
         <div className="flex">
-          <Button image={LeftArrow} text="back" />
-          <Button className="flex-row-reverse" image={RightArrow} text="next" />
+          <Button
+            image={LeftArrow}
+            text="back"
+            OnClick={() => {
+              console.log("back");
+            }}
+          />
+          <Button
+            className="flex-row-reverse"
+            image={RightArrow}
+            text="next"
+            OnClick={() => {
+              console.log("next");
+            }}
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import { color, motion } from "framer-motion";
-import React from "react";
+import { motion } from "framer-motion";
 
 type ButtonProps = {
   className?: string;
