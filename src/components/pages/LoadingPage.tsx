@@ -1,6 +1,8 @@
 import useMousePos from "@/hooks/useMousePos";
 import { IconLight } from "@/images/imageExport";
 import { easeInOut, motion } from "framer-motion";
+import LoadingCircle from "../LoadingCircle";
+import DisclaimerText from "../disclaimerText";
 
 const LoadingPage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -29,6 +31,14 @@ const LoadingPage = () => {
       >
         :)
       </div>
+      <div
+        id="recommendations text"
+        className="text-l absolute top-10 flex flex-col justify-self-center leading-3"
+        style={parallax(0.005)}
+      >
+        <DisclaimerText text="for best experience" />
+        <DisclaimerText text="use full screen and in 1080p" />
+      </div>
       <div id="Body container" className="flex items-center justify-between">
         <div
           id="Text highlight"
@@ -46,28 +56,11 @@ const LoadingPage = () => {
           <p className="">Creative Work</p>
         </div>
         <div
-          id="Loading Bar"
+          id="Loading circle"
           className="mr-[8rem] aspect-square h-[16rem] rounded-full"
           style={parallax(0.02)}
         >
-          <svg
-            id="Loading circle"
-            className="[transform:rotateY(180deg)]" //flip the loading on y axis
-            viewBox="25 25 50 50"
-          >
-            <motion.circle
-              cx="50"
-              cy="50"
-              r="20"
-              fill="none"
-              stroke="black"
-              strokeWidth={4}
-              strokeDashoffset={Math.PI * 20 * -2}
-              strokeDasharray={Math.PI * 20 * 2}
-              animate={{ strokeDashoffset: 0 }}
-              transition={{ delay: 1, duration: 2, ease: easeInOut }}
-            />
-          </svg>
+          <LoadingCircle />
         </div>
       </div>
       <div
@@ -78,7 +71,29 @@ const LoadingPage = () => {
         <img src={IconLight}></img>
         <div className="flex w-full flex-col justify-evenly">
           <div className="h-1 w-full bg-black" />
-          <p className="text-3xl">TJIT528</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="relative text-3xl">BY: TJIT528</p>
+              <p
+                className="textStroke absolute bottom-5 text-3xl text-transparent"
+                style={parallax(0.005)}
+              >
+                BY: TJIT528
+              </p>
+            </div>
+            <motion.div
+              className="mr-10 cursor-pointer rounded-lg border-2 border-black bg-white p-4 px-40 text-xl opacity-0"
+              style={parallax(0.005)}
+              whileHover="hover"
+              animate={{ background: "#fff", color: "#000", opacity: 1 }}
+              variants={{
+                hover: { background: "#000", color: "#fff" },
+              }}
+              transition={{ duration: 0.1, opacity: { delay: 3 } }}
+            >
+              Continue
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.div>
