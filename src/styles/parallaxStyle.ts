@@ -1,6 +1,6 @@
 export const parallax = (
-  mouseX: number,
-  mouseY: number,
+  mouseX: number | null,
+  mouseY: number | null,
   effectStrength: number,
 ) => {
   if (mouseX == null || mouseY == null) {
@@ -13,7 +13,7 @@ export const parallax = (
   };
 };
 
-export const parallaxX = (mouseX: number, effectStrength: number) => {
+export const parallaxX = (mouseX: number | null, effectStrength: number) => {
   if (mouseX == null) {
     return;
   }
@@ -24,7 +24,7 @@ export const parallaxX = (mouseX: number, effectStrength: number) => {
   };
 };
 
-export const parallaxY = (mouseY: number, effectStrength: number) => {
+export const parallaxY = (mouseY: number | null, effectStrength: number) => {
   if (mouseY == null) {
     return;
   }

@@ -1,10 +1,11 @@
 import useMousePos from "@/hooks/useMousePos";
 import { IconLight } from "@/images/imageExport";
 import { motion } from "framer-motion";
-import LoadingCircle from "../LoadingCircle";
-import DisclaimerText from "../disclaimerText";
+import LoadingCircle from "@components/LoadingCircle";
+import DisclaimerText from "@components/disclaimerText";
+import Button from "@components/Button";
 import { useContext } from "react";
-import { TransitionContext } from "@/App";
+import { ThemeContext, TransitionContext } from "@/App";
 
 const LoadingPage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -19,7 +20,7 @@ const LoadingPage = () => {
     };
   };
   const { handleTransitionTo } = useContext(TransitionContext);
-
+  const { handleToggleTheme } = useContext(ThemeContext);
   return (
     <motion.div
       className="bold flex h-full w-full select-none flex-col justify-center bg-white p-10 text-black"
@@ -28,11 +29,17 @@ const LoadingPage = () => {
     >
       <div
         id="header content"
-        className="absolute right-0 top-0 text-3xl"
+        className="absolute right-0 top-0 z-20 text-3xl"
         style={parallax(0.075)}
       >
         :)
       </div>
+      <Button
+        text="DarkTheme"
+        className="absolute right-10 top-10 "
+        style={parallax(0.01)}
+        onClick={handleToggleTheme}
+      />
       <div
         id="recommendations text"
         className="text-l absolute top-10 flex flex-col justify-self-center leading-3"
@@ -83,21 +90,14 @@ const LoadingPage = () => {
                 BY: TJIT528
               </p>
             </div>
-            <motion.div
-              className="mr-10 cursor-pointer rounded-lg border-2 border-black bg-white p-4 px-40 text-xl opacity-0"
+            <Button
+              className="px-40 text-xl"
               style={parallax(0.005)}
-              whileHover="hover"
-              animate={{ background: "#fff", color: "#000", opacity: 1 }}
-              variants={{
-                hover: { background: "#000", color: "#fff" },
-              }}
-              transition={{ duration: 0.1, opacity: { delay: 0 } }}
               onClick={() => {
                 handleTransitionTo("main");
               }}
-            >
-              Continue
-            </motion.div>
+              text="Continue"
+            />
           </div>
         </div>
       </div>

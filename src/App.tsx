@@ -1,7 +1,7 @@
 import HomePage from "@pages/HomePage";
 import "@styles/styles.css";
 import "@styles/fonts.css";
-import LoadingPage from "@/components/pages/LoadingPage";
+import LoadingPage from "./components/pages/LoadingPage";
 import TransitionAnim from "@/components/TransitionAnim";
 import { createContext, useEffect, useState } from "react";
 import {
@@ -10,20 +10,24 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import ScreenInverseFilter from "./components/ScreenInverseFilter";
 
 export const TransitionContext = createContext<any>(null);
+export const ThemeContext = createContext<any>(null);
 
 function App() {
   const [transition, setTransition] = useState<string | null>(null);
+  const [isDarkmode, setDarkmode] = useState<boolean>(false);
+
   const handleTransitionTo = (link: string) => {
     setTransition(link);
   };
   const handleFinishTransition = () => {
     setTransition(null);
   };
-  useEffect(() => {
-    console.log(transition);
-  }, [transition]);
+  const handleToggleTheme = () => {
+    setDarkmode(!isDarkmode);
+  };
 
   return (
     <>
@@ -33,14 +37,24 @@ function App() {
           handleFinishTransition: handleFinishTransition,
         }}
       >
-        <Router basename="math102-creative-work">
-          {!!transition && <TransitionAnim />}
-          <Routes>
-            <Route path="/start" element={<LoadingPage />} />
-            <Route path="/main" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/start" />} />
-          </Routes>
-        </Router>
+        <ThemeContext.Provider
+          value={{
+            handleToggleTheme: handleToggleTheme,
+            isDarkmode: isDarkmode,
+          }}
+        >
+          <Router basename="math102-creative-work">
+            {/*used for darkmode */}
+            <ScreenInverseFilter>
+              {!!transition && <TransitionAnim />}
+              <Routes>
+                <Route path="/start" element={<LoadingPage />} />
+                <Route path="/main" element={<HomePage />} />
+                <Route path="*" element={<Navigate to="/start" />} />
+              </Routes>
+            </ScreenInverseFilter>
+          </Router>
+        </ThemeContext.Provider>
       </TransitionContext.Provider>
     </>
   );
