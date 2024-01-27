@@ -1,9 +1,11 @@
 import { parallax } from "@/styles/parallaxStyle";
 import Button from "../Button";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
 import { motion } from "framer-motion";
+import clsx from "clsx";
+import MainLinkButton from "../MainLinkButton";
 
 const HomePage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -35,25 +37,26 @@ const HomePage = () => {
           How does mathematics affect me?
         </div>
         <motion.div
-          className="flex items-center overflow-hidden"
+          className={clsx(
+            "flex items-center overflow-hidden ",
+            isDarkmode && "invert",
+          )}
+          style={parallax(mouseX, mouseY, 0.025)}
           initial={{ height: 0 }}
           animate={{ height: 75 }}
-          transition={{ delay: 1, staggerChildren: 0.25 }}
+          transition={{ delay: 1 }}
         >
-          <motion.div className="bg-Red mr-2 cursor-pointer rounded-lg  p-4 text-white">
-            My Life
-          </motion.div>
-          <motion.div className="bg-Yellow mr-2 cursor-pointer rounded-lg  p-4 text-white">
-            My Hobbies
-          </motion.div>
-          <motion.div className="bg-Green mr-2 cursor-pointer rounded-lg  p-4 text-white">
-            My Eduction
-          </motion.div>
-          <motion.div className="bg-Blue mr-2 cursor-pointer rounded-lg  p-4 text-white">
-            My Everyday
-          </motion.div>
-          <motion.div className="bg-Purple mr-2 cursor-pointer rounded-lg  p-4 text-white">
-            My Feelings
+          <motion.div
+            className="flex gap-4"
+            initial="hidden"
+            animate="visible"
+            transition={{ staggerChildren: 0.25, delayChildren: 2 }}
+          >
+            <MainLinkButton color="bg-Red" text="My Life" goto="start" />
+            <MainLinkButton color="bg-Yellow" text="My Hobbies" goto="start" />
+            <MainLinkButton color="bg-Green" text="My Eduction" goto="start" />
+            <MainLinkButton color="bg-Blue" text="My Everyday" goto="start" />
+            <MainLinkButton color="bg-Purple" text="My Feelings" goto="start" />
           </motion.div>
         </motion.div>
       </div>
