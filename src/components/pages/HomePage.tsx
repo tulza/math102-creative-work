@@ -1,11 +1,12 @@
 import { parallax } from "@/styles/parallaxStyle";
 import Button from "../Button";
-import { useContext } from "react";
+import React, { Children, useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import MainLinkButton from "../MainLinkButton";
+import ScrollingText from "../ScrollingText";
 
 const HomePage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -13,25 +14,26 @@ const HomePage = () => {
   const { isDarkmode, handleToggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="bold flex h-full w-full select-none bg-white p-10 text-black">
+    <div className="bold relative flex h-full w-full select-none bg-white p-10 text-black">
       <Button
         text={isDarkmode ? "Light Mode" : "Dark Mode"}
-        className="absolute right-10 top-10 "
+        className="absolute right-10 top-10 z-30"
         style={parallax(mouseX, mouseY, 0.01)}
         onClick={handleToggleTheme}
       />
       <Button
         text="Back"
-        className="absolute left-10 top-10 "
+        className="absolute left-10 top-10 z-30"
         style={parallax(mouseX, mouseY, 0.01)}
         onClick={() => {
           handleTransitionTo("start");
         }}
       />
+      <BackgroundEffect />
       {/* Text */}
-      <div className="flex h-full w-full flex-col items-center justify-center ">
+      <div className="z-20 flex h-full w-full flex-col items-center justify-center">
         <div
-          className="whitespace-nowrap text-2xl"
+          className="whitespace-nowrap rounded-lg bg-[#ffffff99] text-2xl"
           style={parallax(mouseX, mouseY, 0.05)}
         >
           How does mathematics affect me?
@@ -64,34 +66,68 @@ const HomePage = () => {
   );
 };
 
-// const CursorTrack = ({
-//   mouseX,
-//   mouseY,
-// }: {
-//   mouseX: number | null;
-//   mouseY: number | null;
-// }) => {
-//   const [Linelength, setlength] = useState(0);
-//   const [heightOffset, setHeightOffset] = useState(
-//     Number(window.innerHeight / 2),
-//   );
-//   const [widthOffset, setWidthOffset] = useState(Number(window.innerWidth / 2));
+const BackgroundEffect = React.memo(() => {
+  const firstLevelRandom = () => {
+    return Math.random() * 110 - 10;
+  };
+  const secondLevelRandom = () => {
+    return Math.random() * 110 - 10;
+  };
+  const thirdLevelRandom = () => {
+    return Math.random() * 50 - 50;
+  };
+  const getRandomFromArray = () => {
+    return itemList[Math.floor(Math.random() * itemList.length)];
+  };
+  const itemList = [
+    "measurements",
+    "video games",
+    "groceries",
+    "programming",
+    "budgeting",
+    "cooking",
+    "designing",
+    "planning",
+  ];
+  return (
+    <motion.div
+      className="absolute left-0 top-[-16%] grid h-[110vh] w-[150vw]"
+      initial={{ rotate: -5, opacity: 0 }}
+      animate={{ rotate: [3, -3, 3], opacity: 1 }}
+      transition={{
+        opacity: { duration: 10 },
+        rotate: { repeat: Infinity, duration: 15, ease: "easeInOut" },
+      }}
+    >
+      {[null, null, null, null, null, null].map(() => {
+        return (
+          <ScrollTextContainer>
+            <ScrollingText
+              text={getRandomFromArray()}
+              init={firstLevelRandom()}
+            />
+            <ScrollingText
+              text={getRandomFromArray()}
+              init={secondLevelRandom()}
+            />
+            <ScrollingText
+              text={getRandomFromArray()}
+              init={thirdLevelRandom()}
+            />
+          </ScrollTextContainer>
+        );
+      })}
+    </motion.div>
+  );
+});
 
-//   useEffect(() => {
-//     addEventListener("win")
-//   });
-//   useEffect(() => {
-//     if (!mouseX || !mouseY) return;
-//     setlength(
-//       Math.sqrt((mouseX - widthOffset) ** 2 + (mouseY - heightOffset) ** 2),
-//     );
-//   }, [mouseX, mouseY]);
-//   return (
-//     <div
-//       className="z-90 absolute h-0.5 w-[200px] bg-black "
-//       style={{ width: Linelength }}
-//     ></div>
-//   );
-// };
+const ScrollTextContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="relative">
+      <hr className="mt-4" />
+      {children}
+    </div>
+  );
+};
 
 export default HomePage;

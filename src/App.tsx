@@ -17,7 +17,7 @@ export const ThemeContext = createContext<any>(null);
 
 function App() {
   const [transition, setTransition] = useState<string | null>(null);
-  const [isDarkmode, setDarkmode] = useState<boolean>(false);
+  const [isDarkmode, setDarkmode] = useState<boolean>(true);
 
   /**
    * @param link
