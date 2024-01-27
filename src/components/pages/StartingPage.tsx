@@ -87,7 +87,6 @@ const StartingPage = () => {
               </p>
             </div>
             <motion.div
-              className=""
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
               transition={{ delay: 3 }}

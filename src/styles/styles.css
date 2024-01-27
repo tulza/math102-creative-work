@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --blue: #54a6c9;
+  --green: #79c954;
+  --purple: #9554c9;
+  --red: #c95454;
+  --yellow: #c9af54;
+}
+
 html,
 #App {
   @apply h-[100vh] w-[100vw] bg-white;

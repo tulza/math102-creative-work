@@ -15,11 +15,11 @@ export default {
     },
     extend: {
       colors: {
-        background: "var(--background)",
-        element: "var(--element)",
-        primary: "var(--primary)",
-        accent: "var(--accent)",
-        text: "var(--text)",
+        Blue: "var(--blue)",
+        Green: "var(--green)",
+        Purple: "var(--purple)",
+        Red: "var(--red)",
+        Yellow: "var(--yellow)",
       },
       screens: {},
       transitionProperty: {
