@@ -1,47 +1,30 @@
-import { loremIpsom } from "@/data/dialogue";
-import { motion } from "framer-motion";
-import Button from "../ImageButton";
-import { LeftArrow, RightArrow } from "@/images/imageExport.js";
+import { parallax } from "@/styles/parallaxStyle";
+import Button from "../Button";
+import { useContext } from "react";
+import { ThemeContext, TransitionContext } from "@/App";
+import useMousePos from "@/hooks/useMousePos";
 
 const HomePage = () => {
-  return (
-    <div
-      id="Container"
-      className="mx-auto flex h-full w-[1000px] flex-col py-10"
-    >
-      <div id="Header" className=" flex justify-between text-xl font-bold">
-        <code>Math 102 Creative work</code>
-        <code>Tjit528</code>
-      </div>
+  const { mouseX, mouseY } = useMousePos();
+  const { handleTransitionTo } = useContext(TransitionContext);
+  const { handleToggleTheme } = useContext(ThemeContext);
 
-      <div
-        id="Content"
-        className="flex h-full flex-col items-center justify-center gap-10"
-      >
-        <motion.div className="w-[600px] outline"></motion.div>
-        <div>
-          {loremIpsom.map((dialogue, index) => (
-            <p key={index}>{dialogue}</p>
-          ))}
-        </div>
-        <div className="flex">
-          <Button
-            image={LeftArrow}
-            text="back"
-            OnClick={() => {
-              console.log("back");
-            }}
-          />
-          <Button
-            className="flex-row-reverse"
-            image={RightArrow}
-            text="next"
-            OnClick={() => {
-              console.log("next");
-            }}
-          />
-        </div>
-      </div>
+  return (
+    <div className="bold flex h-full w-full select-none flex-col justify-center bg-white p-10 text-black">
+      <Button
+        text="DarkTheme"
+        className="absolute right-10 top-10 "
+        style={parallax(mouseX, mouseY, 0.01)}
+        onClick={handleToggleTheme}
+      />
+      <Button
+        text="Back"
+        className="absolute left-10 top-10 "
+        style={parallax(mouseX, mouseY, 0.01)}
+        onClick={() => {
+          handleTransitionTo("start");
+        }}
+      />
     </div>
   );
 };

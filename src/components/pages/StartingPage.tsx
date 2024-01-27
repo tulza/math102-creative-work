@@ -1,13 +1,13 @@
 import useMousePos from "@/hooks/useMousePos";
 import { IconLight } from "@/images/imageExport";
-import { motion } from "framer-motion";
 import LoadingCircle from "@components/LoadingCircle";
 import DisclaimerText from "@components/disclaimerText";
 import Button from "@components/Button";
 import { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
+import { motion } from "framer-motion";
 
-const LoadingPage = () => {
+const StartingPage = () => {
   const { mouseX, mouseY } = useMousePos();
   const parallax = (effectStrength: number) => {
     if (mouseX == null || mouseY == null) {
@@ -22,11 +22,7 @@ const LoadingPage = () => {
   const { handleTransitionTo } = useContext(TransitionContext);
   const { handleToggleTheme } = useContext(ThemeContext);
   return (
-    <motion.div
-      className="bold flex h-full w-full select-none flex-col justify-center bg-white p-10 text-black"
-      animate={{ opacity: 1 }}
-      transition={{ delay: 3.5 }}
-    >
+    <div className="bold flex h-full w-full select-none flex-col justify-center bg-white p-10 text-black">
       <div
         id="header content"
         className="absolute right-0 top-0 z-20 text-3xl"
@@ -90,19 +86,26 @@ const LoadingPage = () => {
                 BY: TJIT528
               </p>
             </div>
-            <Button
-              className="px-40 text-xl"
-              style={parallax(0.005)}
-              onClick={() => {
-                handleTransitionTo("main");
-              }}
-              text="Continue"
-            />
+            <motion.div
+              className=""
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 3 }}
+            >
+              <Button
+                className="px-40 text-xl"
+                style={parallax(0.005)}
+                onClick={() => {
+                  handleTransitionTo("main");
+                }}
+                text="Continue"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
-export default LoadingPage;
+export default StartingPage;

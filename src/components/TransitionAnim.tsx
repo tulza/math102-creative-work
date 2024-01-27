@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const TransitionAnim = () => {
+const TransitionAnim = ({ transition }: { transition: string }) => {
   const navigate = useNavigate();
   const { handleFinishTransition } = useContext(TransitionContext);
   const transitionDuration = 2;
   useEffect(() => {
-    setTimeout(() => navigate("main"), (transitionDuration * 1000) / 2);
+    setTimeout(() => navigate(transition), (transitionDuration * 1000) / 2);
     setTimeout(handleFinishTransition, transitionDuration * 1000);
   });
   return (

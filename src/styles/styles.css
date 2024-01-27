@@ -2,17 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: hsl(218, 26%, 24%);
-  --element: hsl(218, 26%, 20%);
-  --primary: hsl(201, 31%, 42%);
-  --accent: hsl(350, 100%, 74%);
-  --text: hsl(17, 100%, 99%);
-}
-
 html,
 #App {
-  @apply h-[100vh] w-[100vw] bg-background;
+  @apply h-[100vh] w-[100vw] bg-white;
 }
 
 html {

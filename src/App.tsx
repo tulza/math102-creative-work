@@ -1,9 +1,9 @@
 import HomePage from "@pages/HomePage";
 import "@styles/styles.css";
 import "@styles/fonts.css";
-import LoadingPage from "./components/pages/LoadingPage";
+import StartingPage from "./components/pages/StartingPage";
 import TransitionAnim from "@/components/TransitionAnim";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -19,12 +19,23 @@ function App() {
   const [transition, setTransition] = useState<string | null>(null);
   const [isDarkmode, setDarkmode] = useState<boolean>(false);
 
+  /**
+   * @param link
+   */
   const handleTransitionTo = (link: string) => {
     setTransition(link);
   };
+  /**
+   * @param none
+   * @return void
+   */
   const handleFinishTransition = () => {
     setTransition(null);
   };
+  /**
+   * @param none
+   * @return void
+   */
   const handleToggleTheme = () => {
     setDarkmode(!isDarkmode);
   };
@@ -46,9 +57,9 @@ function App() {
           <Router basename="math102-creative-work">
             {/*used for darkmode */}
             <ScreenInverseFilter>
-              {!!transition && <TransitionAnim />}
+              {!!transition && <TransitionAnim transition={transition} />}
               <Routes>
-                <Route path="/start" element={<LoadingPage />} />
+                <Route path="/start" element={<StartingPage />} />
                 <Route path="/main" element={<HomePage />} />
                 <Route path="*" element={<Navigate to="/start" />} />
               </Routes>
