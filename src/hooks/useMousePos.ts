@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 type MousePosType = {
-  mouseX: number | null;
-  mouseY: number | null;
+  mouseX: number;
+  mouseY: number;
 };
 
 const useMousePos = () => {
   const [MousePos, setMousePos] = useState<MousePosType>({
-    mouseX: null,
-    mouseY: null,
+    mouseX: window.innerWidth / 2,
+    mouseY: window.innerHeight / 2,
   });
 
   useEffect(() => {

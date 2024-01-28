@@ -27,7 +27,7 @@ const LifePage = () => {
       />
       <Button
         text="Return"
-        className="absolute bottom-10 right-10 z-30 px-10"
+        className=" fixed bottom-10 right-10 z-30 w-max px-20"
         style={parallax(mouseX, mouseY, 0.03)}
         onClick={() => {
           handleTransitionTo("main");
@@ -39,7 +39,7 @@ const LifePage = () => {
         style={parallax(mouseX, mouseY, 0.005)}
       >
         <p className="text-3xl" style={parallax(mouseX, mouseY, 0.01)}>
-          My experience with math
+          My experience with math <InvertBypass>🔢📏</InvertBypass>
         </p>
         <p className="text-Gray light text-xl">
           an overall evaluation of my experience with math from years of it in
@@ -77,12 +77,14 @@ const LifePage = () => {
           </p>
           <p>
             Now that I have started university and had lived alone for a period
-            math had help me accomplished many basic tasks and needs.
+            math had help me accomplished many basic tasks and needs. and with
+            my passion toward computer science, I was able incorporate many more
+            of the advance concept that was taught in school, and into my games
+            and websites projects such as this!
           </p>
-          <p className="">
-            Now with my passion toward computer science, I was able incorporate
-            many more of the advance concept that was taught in school, and into
-            my games and websites projects such as this! ᕕ( ᐛ )ᕗ
+          <p>
+            Overall math is great for what I do!{" "}
+            <span className="bold">ᕕ( ᐛ )ᕗ</span>
           </p>
         </div>
       </div>
