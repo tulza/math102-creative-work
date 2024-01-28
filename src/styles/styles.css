@@ -8,6 +8,8 @@
   --purple: #9554c9;
   --red: #c95454;
   --yellow: #c9af54;
+  --gray: rgb(148, 149, 150);
+  --darkGray: rgb(76, 76, 76);
 }
 
 html,

@@ -20,6 +20,8 @@ export default {
         Purple: "var(--purple)",
         Red: "var(--red)",
         Yellow: "var(--yellow)",
+        Gray: "var(--gray)",
+        DarkGray: "var(--darkGray)",
       },
       screens: {},
       transitionProperty: {

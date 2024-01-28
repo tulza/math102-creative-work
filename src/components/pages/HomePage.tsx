@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import MainLinkButton from "../MainLinkButton";
 import ScrollingText from "../ScrollingText";
+import InvertBypass from "../invertBypass";
 
 const HomePage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -38,45 +39,44 @@ const HomePage = () => {
         >
           How does mathematics affect me?
         </div>
-        <motion.div
-          className={clsx(
-            "flex items-center overflow-hidden ",
-            isDarkmode && "invert",
-          )}
-          style={parallax(mouseX, mouseY, 0.025)}
-          initial={{ height: 0 }}
-          animate={{ height: 75 }}
-          transition={{ delay: 1 }}
-        >
+        <InvertBypass>
           <motion.div
-            className="flex gap-4"
-            initial="hidden"
-            animate="visible"
-            transition={{ staggerChildren: 0.25, delayChildren: 2 }}
+            className="flex items-center overflow-hidden "
+            style={parallax(mouseX, mouseY, 0.025)}
+            initial={{ height: 0 }}
+            animate={{ height: 75 }}
+            transition={{ delay: 1 }}
           >
-            <MainLinkButton color="bg-Red" text="My Life" goto="life" />
-            <MainLinkButton
-              color="bg-Yellow"
-              text="My Hobbies"
-              goto="hobbies"
-            />
-            <MainLinkButton
-              color="bg-Green"
-              text="My Eduction"
-              goto="education"
-            />
-            <MainLinkButton
-              color="bg-Blue"
-              text="My Everyday"
-              goto="everyday"
-            />
-            <MainLinkButton
-              color="bg-Purple"
-              text="My Feelings"
-              goto="feelings"
-            />
+            <motion.div
+              className="flex gap-4"
+              initial="hidden"
+              animate="visible"
+              transition={{ staggerChildren: 0.25, delayChildren: 2 }}
+            >
+              <MainLinkButton color="bg-Red" text="My Life" goto="life" />
+              <MainLinkButton
+                color="bg-Yellow"
+                text="My Hobbies"
+                goto="hobbies"
+              />
+              <MainLinkButton
+                color="bg-Green"
+                text="My Eduction"
+                goto="education"
+              />
+              <MainLinkButton
+                color="bg-Blue"
+                text="My Everyday"
+                goto="everyday"
+              />
+              <MainLinkButton
+                color="bg-Purple"
+                text="My Feelings"
+                goto="feelings"
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </InvertBypass>
       </div>
     </div>
   );
@@ -149,7 +149,7 @@ const BackgroundEffect = React.memo(() => {
 const ScrollTextContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative">
-      <hr className="mt-4" />
+      <hr className="border-Gray mt-4" />
       {children}
     </div>
   );

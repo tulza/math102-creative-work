@@ -10,7 +10,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import ScreenInverseFilter from "./components/ScreenInverseFilter";
+import ScreenInvertFilter from "./components/ScreenInvertFilter";
 import LifePage from "./components/pages/LifePage";
 import HobbiesPage from "./components/pages/HobbiesPage";
 import EducationPage from "./components/pages/EducationPage";
@@ -61,7 +61,7 @@ function App() {
         >
           <Router basename="math102-creative-work">
             {/*used for darkmode */}
-            <ScreenInverseFilter>
+            <ScreenInvertFilter>
               {!!transition && <TransitionAnim transition={transition} />}
               <Routes>
                 <Route path="/start" element={<StartingPage />} />
@@ -73,7 +73,7 @@ function App() {
                 <Route path="/feelings" element={<FeelingsPage />} />
                 <Route path="*" element={<Navigate to="/start" />} />
               </Routes>
-            </ScreenInverseFilter>
+            </ScreenInvertFilter>
           </Router>
         </ThemeContext.Provider>
       </TransitionContext.Provider>

@@ -2,16 +2,16 @@ import { ThemeContext } from "@/App";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 
-const ScreenInverseFilter = ({ children }: { children?: React.ReactNode }) => {
+const InvertBypass = ({ children }: { children?: React.ReactNode }) => {
   const { isDarkmode } = useContext(ThemeContext);
   return (
-    <motion.div
-      className="absolute z-50 h-[100vh] w-[100vw] rounded-full"
+    <motion.span
+      className="inline-block"
       animate={{ filter: isDarkmode ? "invert(100%)" : "invert(0%)" }}
     >
       {children}
-    </motion.div>
+    </motion.span>
   );
 };
 
-export default ScreenInverseFilter;
+export default InvertBypass;
