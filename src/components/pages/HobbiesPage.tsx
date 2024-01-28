@@ -1,11 +1,11 @@
 import { parallax } from "@/styles/parallaxStyle";
-import Button from "../Button";
+import Button from "@components/Button";
 import { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { motion } from "framer-motion";
-import InvertBypass from "../invertBypass";
+import InvertBypass from "@components/InvertBypass";
 import { CursorTrackCode, ParallaxCode } from "@/images/imageExport";
 
 const HobbiesPage = () => {

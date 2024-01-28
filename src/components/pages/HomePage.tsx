@@ -4,10 +4,9 @@ import React, { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
 import { motion } from "framer-motion";
-import clsx from "clsx";
-import MainLinkButton from "../MainLinkButton";
-import ScrollingText from "../ScrollingText";
-import InvertBypass from "../invertBypass";
+import MainLinkButton from "@components/MainLinkButton";
+import ScrollingText from "@components/ScrollingText";
+import InvertBypass from "@components/InvertBypass";
 
 const HomePage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -120,7 +119,7 @@ const BackgroundEffect = React.memo(() => {
         rotate: { repeat: Infinity, duration: 15, ease: "easeInOut" },
       }}
     >
-      {[null, null, null, null, null, null].map((a, i) => {
+      {[null, null, null, null, null, null].map((_, i) => {
         return (
           <ScrollTextContainer key={i}>
             <ScrollingText

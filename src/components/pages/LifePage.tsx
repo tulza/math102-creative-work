@@ -1,9 +1,9 @@
 import { parallax } from "@/styles/parallaxStyle";
-import Button from "../Button";
+import Button from "@components/Button";
 import { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
-import InvertBypass from "../invertBypass";
+import InvertBypass from "@components/InvertBypass";
 
 const LifePage = () => {
   const { mouseX, mouseY } = useMousePos();
