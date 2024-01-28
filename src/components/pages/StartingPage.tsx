@@ -20,7 +20,7 @@ const StartingPage = () => {
     };
   };
   const { handleTransitionTo } = useContext(TransitionContext);
-  const { handleToggleTheme } = useContext(ThemeContext);
+  const { handleToggleTheme, isDarkmode } = useContext(ThemeContext);
   return (
     <div className="bold flex h-full w-full select-none flex-col justify-center bg-white p-10 text-black">
       <div
@@ -31,7 +31,7 @@ const StartingPage = () => {
         :)
       </div>
       <Button
-        text="DarkTheme"
+        text={isDarkmode ? "Light Mode" : "Dark Mode"}
         className="absolute right-10 top-10 "
         style={parallax(0.01)}
         onClick={handleToggleTheme}

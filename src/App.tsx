@@ -11,6 +11,11 @@ import {
   Navigate,
 } from "react-router-dom";
 import ScreenInverseFilter from "./components/ScreenInverseFilter";
+import LifePage from "./components/pages/LifePage";
+import HobbiesPage from "./components/pages/HobbiesPage";
+import EducationPage from "./components/pages/EducationPage";
+import EverydayPage from "./components/pages/EverydayPage";
+import FeelingsPage from "./components/pages/FeelingsPage";
 
 export const TransitionContext = createContext<any>(null);
 export const ThemeContext = createContext<any>(null);
@@ -23,7 +28,7 @@ function App() {
    * @param link
    */
   const handleTransitionTo = (link: string) => {
-    setTransition(link);
+    if (transition == null) setTransition(link);
   };
   /**
    * @param none
@@ -61,6 +66,11 @@ function App() {
               <Routes>
                 <Route path="/start" element={<StartingPage />} />
                 <Route path="/main" element={<HomePage />} />
+                <Route path="/life" element={<LifePage />} />
+                <Route path="/hobbies" element={<HobbiesPage />} />
+                <Route path="/education" element={<EducationPage />} />
+                <Route path="/everyday" element={<EverydayPage />} />
+                <Route path="/feelings" element={<FeelingsPage />} />
                 <Route path="*" element={<Navigate to="/start" />} />
               </Routes>
             </ScreenInverseFilter>
