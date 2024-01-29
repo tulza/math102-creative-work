@@ -3,6 +3,7 @@ import Button from "../Button";
 import { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
+import InvertBypass from "@components/InvertBypass";
 
 const FeelingsPage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -24,9 +25,33 @@ const FeelingsPage = () => {
           handleTransitionTo("main");
         }}
       />
-      <div className="mt-20">Yo</div>
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <div className="text-2xl">
+          5 stages of grief while doing a math assignment
+        </div>
+        <InvertBypass>
+          <div className="text-xl">
+            <InvertBypass>(beginning)</InvertBypass>
+            😀&nbsp;
+            <Arrow />
+            🙂&nbsp;
+            <Arrow />
+            🤔&nbsp;
+            <Arrow />
+            😡&nbsp;
+            <Arrow />
+            😢&nbsp;
+            <Arrow />
+            😀&nbsp;
+            <InvertBypass>(finished)</InvertBypass>
+          </div>
+        </InvertBypass>
+      </div>
     </div>
   );
 };
 
+const Arrow = () => {
+  return <InvertBypass>-&gt;</InvertBypass>;
+};
 export default FeelingsPage;
