@@ -8,13 +8,13 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@pages/*": ["./src/components/pages/*"],
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@entities/*": ["./src/entities/*"],
-      "@pages/*": ["./src/components/pages/*"],
-      "@images/*": ["src/images/*"]
+      "@images/*": ["src/images/*"],
+      "@/*": ["./src/*"]
       // "@template/*": ["src/*"],
     },
 
