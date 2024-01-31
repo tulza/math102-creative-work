@@ -1,14 +1,16 @@
 import { parallax } from "@/styles/parallaxStyle";
 import Button from "../Button";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
 import InvertBypass from "@components/InvertBypass";
+import { motion } from "framer-motion";
 
 const FeelingsPage = () => {
   const { mouseX, mouseY } = useMousePos();
   const { handleTransitionTo } = useContext(TransitionContext);
   const { isDarkmode, handleToggleTheme } = useContext(ThemeContext);
+
   return (
     <div className="bold relative flex h-full w-full select-none bg-white p-10">
       <Button
@@ -30,19 +32,21 @@ const FeelingsPage = () => {
           5 stages of grief while doing a math assignment
         </div>
         <InvertBypass>
-          <div className="text-xl">
+          <div className="flex text-xl">
             <InvertBypass>(beginning)</InvertBypass>
-            😀&nbsp;
-            <Arrow />
-            🙂&nbsp;
-            <Arrow />
-            🤔&nbsp;
-            <Arrow />
-            😡&nbsp;
-            <Arrow />
-            😢&nbsp;
-            <Arrow />
-            😀&nbsp;
+            <div>
+              😀&nbsp;
+              <Arrow />
+              🙂&nbsp;
+              <Arrow />
+              🤔&nbsp;
+              <Arrow />
+              😡&nbsp;
+              <Arrow />
+              😢&nbsp;
+              <Arrow />
+              😀&nbsp;
+            </div>
             <InvertBypass>(finished)</InvertBypass>
           </div>
         </InvertBypass>
@@ -54,4 +58,5 @@ const FeelingsPage = () => {
 const Arrow = () => {
   return <InvertBypass>-&gt;</InvertBypass>;
 };
+
 export default FeelingsPage;

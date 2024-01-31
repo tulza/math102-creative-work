@@ -2,8 +2,8 @@ import React from "react";
 
 type CardProps = {
   children?: React.ReactNode;
-  text: string;
-  description: string;
+  text?: string;
+  description?: string;
 };
 const Card = ({ children, text, description }: CardProps) => {
   return (
