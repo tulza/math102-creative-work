@@ -3,9 +3,7 @@ import Button from "../Button";
 import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
-import Card from "@components/Card";
 import { motion, motionValue, useMotionValue } from "framer-motion";
-import clsx from "clsx";
 
 const EverydayPage = () => {
   const { mouseX, mouseY } = useMousePos();
@@ -35,6 +33,13 @@ const EverydayPage = () => {
           >
             Drag these cards around
           </code>
+          <DragableCard >
+            <div className="h-[200px] w-[400px] rounded-lg border-4 border-black p-6">
+            <p className="bold mb-4 text-xl">wa</p>
+            <p>wa</p>
+          </div>
+      </DragableCard >
+          <DragableCard >kek</DragableCard >
           <DragableCard />
           <DragableCard />
           <DragableCard />
@@ -44,10 +49,12 @@ const EverydayPage = () => {
           <DragableCard />
           <DragableCard />
           <DragableCard />
-          <DragableCard />
-          <DragableCard />
-          <DragableCard />
-          <DragableCard />
+          <DragableCard >
+            <div className="h-[200px] w-[400px] rounded-lg border-4 border-black p-6">
+            <p className="bold mb-4 text-xl">wa</p>
+            <p>wa2</p>
+          </div>
+      </DragableCard >
           <DragableCard />
           <DragableCard />
           <DragableCard />
@@ -61,15 +68,15 @@ const EverydayPage = () => {
 
 const DragableCard = React.memo(
   ({ children }: { children?: React.ReactNode }) => {
-    const CardWidth = 500;
-    const CardHeight = 250;
+    const CardWidth = 100;
+    const CardHeight = 100;
     const RandomRotate = (Math.random() - 0.5) * 50;
     const RandomiseZ = Math.floor(Math.random() * 40 + 10);
     const screenX = window.innerWidth;
     const screenY = window.innerHeight;
     const initialX = ((Math.random() - 0.5) * screenX) / 1;
     const initialY = ((Math.random() - 0.5) * screenY) / 1.2;
-
+    console.log("wa");
     const ParallaxWrapper = ({
       z,
       children,
@@ -92,13 +99,13 @@ const DragableCard = React.memo(
         <motion.div
           className="absolute cursor-pointer "
           style={{
-            width: CardWidth,
-            height: CardHeight,
-            rotate: RandomRotate,
+            minWidth: CardWidth,
+            minHeight: CardHeight,
+            
             zIndex: RandomiseZ,
             translateX: "-50%",
           }}
-          animate={{ x: initialX, y: initialY }}
+          initial={{ x: initialX, y: initialY,rotate: RandomRotate, }}
           whileDrag={{ rotate: 0, zIndex: 90 }}
           dragElastic={0.2}
           dragConstraints={{
