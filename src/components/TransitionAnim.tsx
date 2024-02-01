@@ -14,7 +14,7 @@ const TransitionAnim = ({ transition }: { transition: string }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="absolute z-50 h-[100vh] w-[100vw] bg-black"
+        className="absolute z-[999] h-[100vh] w-[100vw] bg-black"
         animate={{ x: ["120%", "0%", "0%", "120%"] }}
         transition={{ duration: transitionDuration }}
       />

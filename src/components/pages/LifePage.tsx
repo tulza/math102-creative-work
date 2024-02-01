@@ -33,7 +33,7 @@ const LifePage = () => {
           handleTransitionTo("main");
         }}
       />
-      <hr className="border-Gray mb-10 mt-20 w-full"></hr>
+      <hr className="mb-10 mt-20 w-full border-Gray"></hr>
       <div
         className="mx-auto h-full w-[750px] select-text outline-white"
         style={parallax(mouseX, mouseY, 0.005)}
@@ -41,14 +41,17 @@ const LifePage = () => {
         <p className="text-3xl" style={parallax(mouseX, mouseY, 0.01)}>
           My experience with math <InvertBypass>🔢📏</InvertBypass>
         </p>
-        <p className="text-Gray light text-xl">
+        <p className="light text-xl text-Gray">
           an overall evaluation of my experience with math from years of it in
           my daily life and education
         </p>
-        <p className="text-DarkGray text-sm">
-          Tjit528&emsp;·&emsp;29/01/2024&emsp;·&emsp;1 min read
+        <p className="text-sm text-DarkGray">
+          Tjit528&emsp;·&emsp;29/01/2024&emsp;·&emsp;2 min read
         </p>
-        <hr className="border-Gray my-10"></hr>
+        <p className="light text-sm text-Gray">
+          (this is the only long read i on this website I swear)
+        </p>
+        <hr className="my-10 border-Gray"></hr>
         <div
           className="light flex flex-col gap-6"
           style={parallax(mouseX, mouseY, 0.005)}
