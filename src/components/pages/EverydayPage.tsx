@@ -1,14 +1,21 @@
 import { parallax } from "@/styles/parallaxStyle";
 import Button from "../Button";
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
-import { motion, motionValue, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 
 const EverydayPage = () => {
   const { mouseX, mouseY } = useMousePos();
   const { handleTransitionTo } = useContext(TransitionContext);
   const { isDarkmode, handleToggleTheme } = useContext(ThemeContext);
+  console.log("wa");
   return (
     <div className="bold relative flex h-full w-full select-none bg-white p-10">
       <Button
@@ -33,13 +40,11 @@ const EverydayPage = () => {
           >
             Drag these cards around
           </code>
-          <DragableCard >
-            <div className="h-[200px] w-[400px] rounded-lg border-4 border-black p-6">
-            <p className="bold mb-4 text-xl">wa</p>
-            <p>wa</p>
-          </div>
-      </DragableCard >
-          <DragableCard >kek</DragableCard >
+
+          <DragableCard></DragableCard>
+          <DragableCard>
+            <div>asdasjkdh</div>
+          </DragableCard>
           <DragableCard />
           <DragableCard />
           <DragableCard />
@@ -49,12 +54,7 @@ const EverydayPage = () => {
           <DragableCard />
           <DragableCard />
           <DragableCard />
-          <DragableCard >
-            <div className="h-[200px] w-[400px] rounded-lg border-4 border-black p-6">
-            <p className="bold mb-4 text-xl">wa</p>
-            <p>wa2</p>
-          </div>
-      </DragableCard >
+          <DragableCard />
           <DragableCard />
           <DragableCard />
           <DragableCard />
@@ -68,55 +68,38 @@ const EverydayPage = () => {
 
 const DragableCard = React.memo(
   ({ children }: { children?: React.ReactNode }) => {
-    const CardWidth = 100;
-    const CardHeight = 100;
-    const RandomRotate = (Math.random() - 0.5) * 50;
-    const RandomiseZ = Math.floor(Math.random() * 40 + 10);
-    const screenX = window.innerWidth;
-    const screenY = window.innerHeight;
-    const initialX = ((Math.random() - 0.5) * screenX) / 1;
-    const initialY = ((Math.random() - 0.5) * screenY) / 1.2;
-    console.log("wa");
-    const ParallaxWrapper = ({
-      z,
-      children,
-    }: {
-      z: number;
-      children: React.ReactNode;
-    }) => {
-      const { mouseX, mouseY } = useMousePos();
-      return (
-        <div
-          className="h-full w-full bg-white outline"
-          style={parallax(mouseX, mouseY, 0.001 * z)}
-        >
-          {children}
-        </div>
-      );
-    };
+    const [CardWidth] = useState(100);
+    const [CardHeight] = useState(100);
+    const [RandomRotate] = useState((Math.random() - 0.5) * 50);
+    const [RandomiseZ] = useState(Math.floor(Math.random() * 40 + 10));
+    const [screenX] = useState(window.innerWidth);
+    const [screenY] = useState(window.innerHeight);
+    const [initialX] = useState(((Math.random() - 0.5) * screenX) / 1);
+    const [initialY] = useState(((Math.random() - 0.5) * screenY) / 1.2);
+
     return (
       <div>
         <motion.div
-          className="absolute cursor-pointer "
+          className="absolute cursor-pointer outline"
           style={{
-            minWidth: CardWidth,
-            minHeight: CardHeight,
-            
+            width: CardWidth,
+            height: CardHeight,
             zIndex: RandomiseZ,
             translateX: "-50%",
           }}
-          initial={{ x: initialX, y: initialY,rotate: RandomRotate, }}
+          initial={{ x: initialX, y: initialY, rotate: RandomRotate }}
           whileDrag={{ rotate: 0, zIndex: 90 }}
-          dragElastic={0.2}
           dragConstraints={{
             top: -screenY / 3,
-            right: screenX / 3,
+            right: screenX / 2.5,
             bottom: screenY / 3,
-            left: -screenX / 3,
+            left: -screenX / 2.5,
           }}
           drag
         >
-          <ParallaxWrapper z={RandomiseZ}>{children}</ParallaxWrapper>
+          <div className="absolute select-none" key="wa">
+            {children}
+          </div>
         </motion.div>
       </div>
     );
