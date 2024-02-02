@@ -1,10 +1,9 @@
 import { parallax } from "@/styles/parallaxStyle";
 import Button from "../Button";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { ThemeContext, TransitionContext } from "@/App";
 import useMousePos from "@/hooks/useMousePos";
 import InvertBypass from "@components/InvertBypass";
-import { motion } from "framer-motion";
 
 const FeelingsPage = () => {
   const { mouseX, mouseY } = useMousePos();
